@@ -37,6 +37,7 @@ def main():
 
     province = sys.argv[1]
 
+    # Note: Using "Quebec" as a parameter doesn't work due the accent
     wins_2019 = load_election_results("data/election43_table11.csv", province)
     wins_2021 = load_election_results("data/election44_table11.csv", province)
 
