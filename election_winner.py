@@ -3,7 +3,8 @@ import sys
 
 
 def load_election_results(filename, province):
-    party_votes = {}
+
+    party_wins = {}
 
     with open(filename, newline='', encoding="utf-8-sig") as file:
         reader = csv.DictReader(file)
@@ -12,19 +13,19 @@ def load_election_results(filename, province):
 
             if row["Province"] == province:
 
-                party = row["Political affiliation"]
-                votes = int(row["Valid votes"])
+                party = row["Elected Candidate/Candidat élu"]
 
-                if party not in party_votes:
-                    party_votes[party] = 0
+                if party not in party_wins:
+                    party_wins[party] = 0
 
-                party_votes[party] += votes
+                party_wins[party] += 1
 
-    return party_votes
+    return party_wins
 
 
-def find_winner(party_votes):
-    winner = max(party_votes, key=party_votes.get)
+def find_winner(party_wins):
+
+    winner = max(party_wins, key=party_wins.get)
     return winner
 
 
@@ -36,11 +37,11 @@ def main():
 
     province = sys.argv[1]
 
-    votes_2019 = load_election_results("data/election43_table11.csv", province)
-    votes_2021 = load_election_results("data/election44_table11.csv", province)
+    wins_2019 = load_election_results("data/election43_table11.csv", province)
+    wins_2021 = load_election_results("data/election44_table11.csv", province)
 
-    winner_2019 = find_winner(votes_2019)
-    winner_2021 = find_winner(votes_2021)
+    winner_2019 = find_winner(wins_2019)
+    winner_2021 = find_winner(wins_2021)
 
     print(f"\nProvince: {province}\n")
 
