@@ -316,6 +316,5 @@ def main(argv):
     print("final_data.csv created successfully")
 
 
-# Run program
 if __name__ == "__main__":
     main(sys.argv)
