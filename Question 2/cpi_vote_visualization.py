@@ -1,4 +1,22 @@
 #!/usr/bin/env python3
+'''
+  Author(s): Rushi Patel 1374939
+
+  Project: CIS2250 Term Project Milestone III 
+  Question:How does the change in the Consumer Price Index (CPI) in each province between 
+  2019 and 2021 relate to changes in federal election vote share for major political parties?
+  
+  Date of Last Update: March 23, 2026.
+  
+  Functional Summary
+      Reads the processed CSV file created by summarize.py.
+      Filters the data by a selected political party passed in as a command-line
+      argument.
+      Creates a scatter plot showing CPI change from 2019 to 2021 on the x-axis
+      and vote share change on the y-axis for each province.
+      Labels each point with the province name to help visualize the relationship
+      between inflation and election vote share change.
+'''
 
 import sys
 import csv
