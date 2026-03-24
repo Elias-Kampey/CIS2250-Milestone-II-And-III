@@ -121,8 +121,6 @@ def create_plot(x_vals, y_vals, labels, party):
     # Plot points
     plt.scatter(x_vals, y_vals, c=colors, s=80)
 
-    plt.scatter(x_vals, y_vals)
-
     # Add reference lines at 0
     plt.axhline(0)
     plt.axvline(0)
