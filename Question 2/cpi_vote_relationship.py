@@ -140,7 +140,6 @@ def calculate_vote_share(data, provinces, parties):
 def load_cpi_files(provinces):
     cpi_data = {}
 
-    # Initialize structure
     for province in provinces:
         cpi_data[province] = {
             "2019": [],
