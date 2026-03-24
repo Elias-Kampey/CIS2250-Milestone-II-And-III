@@ -134,28 +134,38 @@ def plot_results(parties2019, shares2019, parties2021, shares2021, province, vac
     dict2019 = dict(zip(parties2019, shares2019))
     dict2021 = dict(zip(parties2021, shares2021))
 
-    vote_change = []
+    combined = []
 
     for party in all_parties:
         s2019 = dict2019.get(party, 0)
         s2021 = dict2021.get(party, 0)
         change = s2021 - s2019
-        vote_change.append(change)
+        combined.append((party, change))
+
+    # sort by biggest absolute change
+    combined.sort(key=lambda x: abs(x[1]), reverse=True)
+
+    # take top 5 parties
+    top_n = 5
+    combined = combined[:top_n]
+
+    top_parties = [x[0] for x in combined]
+    vote_change = [x[1] for x in combined]
 
     # vacancy change
     vacancy_change = vac2021 - vac2019
 
-    x = range(len(all_parties))
+    x = range(len(top_parties))
 
     plt.figure()
 
-    # bars = vote change
+    # bar chart = vote change
     plt.bar(x, vote_change, label="Vote Share Change")
 
-    # line = vacancy change
+    # horizontal line = vacancy change
     plt.axhline(y=vacancy_change, linestyle='--', label="Vacancy Change")
 
-    plt.xticks(x, all_parties, rotation=90)
+    plt.xticks(x, top_parties, rotation=45, ha="right")
 
     plt.title(f"{province}: Vote Change vs Vacancy Change")
     plt.ylabel("Change (%)")
@@ -163,7 +173,7 @@ def plot_results(parties2019, shares2019, parties2021, shares2021, province, vac
     plt.legend()
     plt.tight_layout()
     plt.show()
-    
+
 def main():
     # gets province inputted into terminal, case insensitive (ex. ON)
     province = sys.argv[1].upper()
