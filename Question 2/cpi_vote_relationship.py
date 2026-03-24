@@ -35,7 +35,6 @@ def load_csv(path):
         with open(path, newline="", encoding="utf-8-sig") as file:
             reader = csv.DictReader(file)
 
-            # Read each row into a dictionary
             for row in reader:
                 if row:
                     data.append(row)
