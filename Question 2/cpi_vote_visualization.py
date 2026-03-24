@@ -147,7 +147,7 @@ def create_plot(x_vals, y_vals, labels, party):
 def main(argv: list[str]) -> None:
     # Ensure correct number of arguments
     if len(argv) != 2:
-        fatal("Usage: python visualize.py <PartyName>")
+        fatal("Usage: python3 cpi_vote_visualization.py <PartyName>")
 
     party = argv[1]
 
